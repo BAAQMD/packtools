@@ -4,14 +4,17 @@
 \alias{unpack_integers}
 \title{Unpack a vector of "packed integers" (like facility IDs or category IDs)}
 \usage{
-unpack_integers(input_data, var_name, verbose = getOption("verbose"))
+unpack_integers(x, ...)
 }
 \description{
 Unpack a vector of "packed integers" (like facility IDs or category IDs)
 }
 \examples{
-input_data <- data_frame(cat_ids = c("c(1, 3)", "c(1:4)"))
-unpack_integers(input_data, var_name = "cat_ids")
-unpack_integers(input_data)
+packed_integers <- c("c(1, 3)", "c(1:4)")
+unpack_integers(packed_integers)
+
+packed_data <- tibble(cat_ids = c("c(1, 3)", "c(1:4)"))
+unpack_integers(packed_data, var_name = "cat_ids")
+unpack_integers(packed_data)
 
 }

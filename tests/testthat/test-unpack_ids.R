@@ -1,36 +1,55 @@
-context("unpack_ids")
+packed_ids <- c("c(1, 3)", "c(1:4)")
+packed_data <- tibble(cat_ids = packed_ids)
 
-input_data <- data_frame(cat_ids = c("c(1, 3)", "c(1:4)"))
-
-# N.B. expect `cat_ids` (plural) to become `cat_id` (singular)
-expected <- data_frame(cat_id = as.integer(c(1, 3, 1, 2, 3, 4)))
-
-test_that("explicit id_var", {
+test_that("unpack_ids (character)", {
 
   expect_identical(
-    unpack_ids(input_data, id_var = "cat_ids"),
-    expected)
+    unpack_ids(packed_ids),
+    c(1L, 3L, 1L, 2L, 3L, 4L))
 
 })
 
-test_that("implicit id_var", {
+test_that("unpack_ids (integer)", {
 
+  x <- c(1L, 3L, 1L, 2L, 3L, 4L)
   expect_identical(
-    unpack_ids(input_data),
-    expected)
+    unpack_ids(x),
+    x)
 
 })
 
-test_that("verbosity", {
+test_that("data.frame (defaults)", {
 
-  expect_message(
-    unpacked <- unpack_ids(input_data, verbose = TRUE),
-    "cat_ids")
+  unpacked_data <-
+    packed_data %>%
+    unpack_ids()
+
+  expect_true("cat_ids" %in% names(packed_data))
+  expect_false("cat_ids" %in% names(unpacked_data))
+  expect_true("cat_id" %in% names(unpacked_data))
+
+  unpacked_data %>%
+    pull(
+      cat_id) %>%
+    expect_identical(
+      c(1L, 3L, 1L, 2L, 3L, 4L))
 
 })
 
-expect_identical(
-  suppressMessages(unpack_ids(input_data)),
-  expected)
+test_that("data.frame (plural_to_singular = FALSE)", {
 
+  unpacked_data <-
+    packed_data %>%
+    unpack_ids(
+      plural_to_singular = FALSE)
 
+  expect_true("cat_ids" %in% names(packed_data))
+  expect_true("cat_ids" %in% names(unpacked_data))
+
+  unpacked_data %>%
+    pull(
+      cat_ids) %>%
+    expect_identical(
+      c(1L, 3L, 1L, 2L, 3L, 4L))
+
+})

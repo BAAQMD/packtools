@@ -2,16 +2,19 @@
 % Please edit documentation in R/unpack_ids.R
 \name{unpack_ids}
 \alias{unpack_ids}
-\title{Unpack a vector of "packed IDs" (like facility IDs or category IDs)}
+\title{unpack_ids}
 \usage{
-unpack_ids(input_data, id_var = NULL, verbose = FALSE)
+unpack_ids(x, ...)
 }
 \description{
 Unpack a vector of "packed IDs" (like facility IDs or category IDs)
 }
 \examples{
-input_data <- data_frame(cat_ids = c("c(1, 3)", "c(1:4)"))
-unpack_ids(input_data, id_var = "cat_ids")
-unpack_ids(input_data)
+packed_ids <- c("c(1, 3)", "c(1:4)")
+unpack_ids(packed_ids)
+
+packed_data <- tibble(cat_ids = c("c(1, 3)", "c(1:4)"))
+unpack_ids(packed_data, id_var = "cat_ids")
+unpack_ids(packed_data)
 
 }
