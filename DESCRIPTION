@@ -1,7 +1,7 @@
 Package: packtools
 Type: Package
 Title: Provides Functions for Unpacking String Representations
-Version: 2019.10.14
+Version: 2019.10.30
 Author: David Holstius <dholstius@baaqmd.gov>
 Maintainer: David Holstius <dholstius@baaqmd.gov>
 Description: More about what it does (maybe more than one line)
@@ -13,5 +13,5 @@ Depends:
     strtools
 Suggests: 
     tidyverse,
-    testthat
+    testthat (>= 2.1.0)
 RoxygenNote: 6.1.1
