@@ -62,3 +62,23 @@ test_that("packed list and named args", {
     test_fun(animals, reptile = "frog"),
     c(unpack_list(animals), reptile = "frog"))
 })
+
+test_that("named args (unique)", {
+  test_fun(
+    apple = "Golden Delicious",
+    orange = "Navel") %>%
+    expect_equal(
+      c(apple = "Golden Delicious",
+        orange = "Navel"))
+})
+
+test_that("named args (not unique)", {
+  test_fun(
+    apple = "Golden Delicious",
+    orange = "Navel",
+    orange = "Valencia") %>%
+    expect_equal(
+      c(apple = "Golden Delicious",
+        orange = "Navel",
+        orange = "Valencia"))
+})

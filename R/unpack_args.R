@@ -8,8 +8,11 @@
 #'
 #' @export
 unpack_args <- function (x, ...) {
-  x_list <- as.list(x)
-  arg_list <- append(x_list, list(...))
+  if (missing(x)) {
+    arg_list <- list(...)
+  } else {
+    arg_list <- append(as.list(x), list(...))
+  }
   unpacked_args <- unpack_list(arg_list)
   return(unpacked_args)
 }
