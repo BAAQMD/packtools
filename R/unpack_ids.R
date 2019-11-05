@@ -19,6 +19,7 @@ unpack_ids <- function (x, ...) {
 #'
 #' @note presumes that IDs are integers
 #' @method unpack_ids default
+#' @export
 unpack_ids.default <- function (x, ...) {
   unpacked_ids <- unpack_integers(x, ...)
   return(unpacked_ids)
@@ -27,6 +28,7 @@ unpack_ids.default <- function (x, ...) {
 #' unpack_ids
 #'
 #' @method unpack_ids data.frame
+#' @export
 unpack_ids.data.frame <- function (
   x,
   id_var = NULL,

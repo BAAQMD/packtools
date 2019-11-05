@@ -1,7 +1,7 @@
 Package: packtools
 Type: Package
 Title: Provides Functions for Unpacking String Representations
-Version: 2019.10.30
+Version: 2019.11.05
 Author: David Holstius <dholstius@baaqmd.gov>
 Maintainer: David Holstius <dholstius@baaqmd.gov>
 Description: More about what it does (maybe more than one line)
