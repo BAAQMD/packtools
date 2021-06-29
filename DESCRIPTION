@@ -13,5 +13,6 @@ Depends:
     strtools
 Suggests: 
     tidyverse,
-    testthat (>= 2.1.0)
+    testthat (>= 2.1.0),
+    vartools
 RoxygenNote: 7.1.1
