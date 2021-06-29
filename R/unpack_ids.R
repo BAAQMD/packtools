@@ -29,6 +29,10 @@ unpack_ids.default <- function (x, ...) {
 #'
 #' @method unpack_ids data.frame
 #' @export
+#' @importFrom dplyr %>% rename_at mutate_at vars
+#' @importFrom tidyr unnest
+#' @importFrom stats setNames
+#' @importFrom stringr str_remove
 unpack_ids.data.frame <- function (
   x,
   id_var = NULL,
