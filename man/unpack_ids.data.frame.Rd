@@ -4,8 +4,7 @@
 \alias{unpack_ids.data.frame}
 \title{unpack_ids}
 \usage{
-\method{unpack_ids}{data.frame}(x, id_var = NULL,
-  plural_to_singular = TRUE, verbose = FALSE)
+\method{unpack_ids}{data.frame}(x, id_var = NULL, plural_to_singular = TRUE, verbose = FALSE)
 }
 \description{
 unpack_ids
